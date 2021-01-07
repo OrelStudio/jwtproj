@@ -10,21 +10,21 @@ const authRoute = require('./routes/auth')
 const postRoute = require('./routes/posts')
 const validate = require('./routes/refresh')
 
-dotenv.config()
+dotenv.config({ path: 'ENV_FILENAME' })
 
-let db = "mongodb+srv://orelnya:OrelMan10@cluster0.ag3sz.mongodb.net/app?retryWrites=true&w=majority"
+//et db = "mongodb+srv://orelnya:OrelMan10@cluster0.ag3sz.mongodb.net/app?retryWrites=true&w=majority"
 
 // Connect to DB
-//mongoose.connect(
-//  process.env.DB_CONNECT, { useNewUrlParser: true }, () => {
-//    console.log('connected to DB')
-//  }
-//)
 mongoose.connect(
-  db, { useNewUrlParser: true }, () => {
+  process.env.DB_CONNECT, { useNewUrlParser: true }, () => {
     console.log('connected to DB')
   }
 )
+//mongoose.connect(
+//  db, { useNewUrlParser: true }, () => {
+//    console.log('connected to DB')
+//  }
+//)
 
 // Middleware
 app.use(express.json())
