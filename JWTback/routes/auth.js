@@ -7,6 +7,9 @@ const bcrypt = require('bcryptjs')
 const { registerValidation, loginValidation } = require('../validation')
 const lodash = require('lodash')
 
+TOKEN_SECRET = "E8ndq&Vke4xMFJ#g3yLM+%zxVfNW_sytnRv4_+Pn!BE_AUza4AJv-+TnPBKu+9m4uSVRj"
+REFRESH_SECRET = "spdjg345fioIYUDFeirfgdffg5DG34IYSHBf34gdfgdfgdgGF4564fgdgfdf"
+
 const getSafeUser = (user) => {
   if (!user) {
     return null
@@ -65,7 +68,10 @@ router.post('/login', async (req, res) => {
         return Promise.reject(new Error('Email or password is wrong (PASS)'))
       }
     }).then(() => {
-      return {token: jwt.sign({_id: user._id, name: user.name}, process.env.TOKEN_SECRET), refresh: jwt.sign({_id: user._id, name: user.name}, process.env.REFRESH_SECRET)}
+      return {
+        token: jwt.sign({_id: user._id, name: user.name}, TOKEN_SECRET),
+        refresh: jwt.sign({_id: user._id, name: user.name}, REFRESH_SECRET)
+      }
     }).then((tokens) => {
       let {token, refresh} = tokens
       return res.status(200).send({
@@ -73,6 +79,8 @@ router.post('/login', async (req, res) => {
         token,
         refresh
       })
+    }).catch((er) => {
+      res.status(500)
     })
   }).catch((e) => {
     return res.status(500).send({message: e.message})

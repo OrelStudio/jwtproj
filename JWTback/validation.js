@@ -32,23 +32,5 @@ const loginValidation = data => {
   return Joi.validate(data, schema)
 }
 
-const refreshValidation = data => {
-  const schema = {
-    refresh: Joi.string()
-      .required()
-  }
-}
-
-const renewValidation = data => {
-  const schema = {
-    refresh: Joi.string()
-      .required(),
-    token: Joi.string()
-      .required()
-  }
-}
-
-module.exports.renewValidation = renewValidation
 module.exports.registerValidation = registerValidation
 module.exports.loginValidation = loginValidation
-module.exports.refreshValidation = refreshValidation
