@@ -12,9 +12,16 @@ const validate = require('./routes/refresh')
 
 dotenv.config()
 
+let db = "mongodb+srv://orelnya:OrelMan10@cluster0.ag3sz.mongodb.net/app?retryWrites=true&w=majority"
+
 // Connect to DB
+//mongoose.connect(
+//  process.env.DB_CONNECT, { useNewUrlParser: true }, () => {
+//    console.log('connected to DB')
+//  }
+//)
 mongoose.connect(
-  process.env.DB_CONNECT, { useNewUrlParser: true }, () => {
+  db, { useNewUrlParser: true }, () => {
     console.log('connected to DB')
   }
 )
