@@ -29,4 +29,5 @@ app.use('/api/validate', validate)
 
 app.use('/api/posts', postRoute)
 
-app.listen(8000, () => console.log('Server is up and running'))
+//app.listen(8000, () => console.log('Server is up and running'))
+app.listen(9000, () => console.log('Server is up and running'))
