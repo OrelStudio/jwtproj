@@ -2,7 +2,7 @@
 
 const express = require('express')
 const app = express()
-const dotenv = require('dotenv')
+const dotenv = require('dotenv').config({ path: 'ENV_FILENAME' });
 const mongoose = require('mongoose')
 const cors = require('cors')
 // Import Routes
@@ -12,19 +12,19 @@ const validate = require('./routes/refresh')
 
 dotenv.config()
 
-let db = "mongodb+srv://orelnya:OrelMan10@cluster0.ag3sz.mongodb.net/app?retryWrites=true&w=majority"
+//let db = "mongodb+srv://orelnya:OrelMan10@cluster0.ag3sz.mongodb.net/app?retryWrites=true&w=majority"
 
 // Connect to DB
-//mongoose.connect(
-//  process.env.DB_CONNECT, { useNewUrlParser: true }, () => {
-//    console.log('connected to DB')
-//  }
-//)
 mongoose.connect(
-  db, { useNewUrlParser: true }, () => {
+  process.env.DB_CONNECT, { useNewUrlParser: true }, () => {
     console.log('connected to DB')
   }
 )
+//mongoose.connect(
+//  db, { useNewUrlParser: true }, () => {
+//    console.log('connected to DB')
+//  }
+//)
 
 // Middleware
 app.use(express.json())
