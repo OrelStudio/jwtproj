@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const { registerValidation, loginValidation } = require('../validation')
 const lodash = require('lodash')
- 
+
 const TOKEN_SECRET = "E8ndq&Vke4xMFJ#g3yLM+%zxVfNW_sytnRv4_+Pn!BE_AUza4AJv-+TnPBKu+9m4uSVRj"
 const REFRESH_SECRET = "spdjg345fioIYUDFeirfgdffg5DG34IYSHBf34gdfgdfgdgGF4564fgdgfdf"
 
