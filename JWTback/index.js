@@ -13,7 +13,7 @@ const internalIp = require('internal-ip');
 
 dotenv.config()
 //let ip = '192.168.1.11'
-const db = "mongodb+srv://orelnya:OrelMan10@cluster0.ag3sz.mongodb.net/app?retryWrites=true&w=majority"
+const db = "mongodb+srv://orelnya:<password>@cluster0.ag3sz.mongodb.net/app?retryWrites=true&w=majority"
 
 // Connect to DB
 mongoose.connect(
